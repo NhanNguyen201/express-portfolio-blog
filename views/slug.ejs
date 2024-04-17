@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="./assets/index-b3e3719b.css">
+    <title><%- title %></title>
+</head>
+<body class="bg-gradient-to-l from-cyan-500 to-blue-500">
+    <%- include('nav'); -%>
+    <div class="min-h-screen bg-white m-auto max-w-5xl p-5">
+        <% contents.forEach(function(content){ %>
+            <%- content %>
+        <% }); %>
+    </div>
+    <%- include('footer'); -%>
+</body>
+</html>

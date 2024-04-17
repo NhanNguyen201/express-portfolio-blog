@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      <script src="https://cdn.tailwindcss.com"></script>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      
+      
+      <title>Trọng Nhân</title>
+      <script type="module" crossorigin src="./assets/index-8aed158e.js"></script>
+      <link rel="stylesheet" href="./assets/index-b3e3719b.css">
+    </head>
+    <body class="bg-gradient-to-l from-cyan-500 to-blue-500">
+      <%- include('nav'); -%>
+      <section class="min-h-screen pt-14" id="#">
+        <p class="m-2 text-2xl text-center max-lg:px-12">You can use mouse to interact with the scene below</p>
+        <div class="h-[600px] max-w-5xl m-auto max-lg:w-full" id="three-container">
+          <!-- <canvas id="three-app"></canvas> -->
+          <div class="h-full w-full bg-black text-center box-border pt-20 text-4xl text-white">Loading...</div>
+        </div>
+      </section>
+      <section class="min-h-screen pt-14 " id="about">
+        <div class="m-auto max-w-5xl flex flex-wrap pt-12 ">
+          <div class="flex-grow w-1/2 p-5 pr-2 max-lg:w-full max-lg:px-12 bg-white">
+            <h1 class="text-2xl ">#About</h1>
+            <h2 class="text-xl mb-2 ">Tên: Nguyễn Trọng Nhân</h2>
+            <% if (page && page.introduce) { %>
+              <%- page.introduce %>
+            <% } %>
+          </div>
+          <div class="flex-grow w-1/2 max-lg:w-full relative">
+            <div class="h-[600px] m-auto" id="img-app-container">
+              <!-- <canvas id="img-app"></canvas> -->
+              <div class="h-full w-full bg-black text-center box-border pt-20 text-4xl text-white">Loading...</div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="min-h-screen pt-14 relative" id="exp">
+        <div class="m-auto max-w-5xl flex pt-5">
+          <div class=" w-full bg-black p-5 text-white max-lg:px-12">
+            <h1 class="text-2xl ">#Experience</h1>
+            <h2 class="text-xl ">My projects</h2>
+            <div class="m-auto relative flex flex-wrap justify-start items-center pt-5 px-9 max-lg:px-5 max-lg:justify-center">
+              <div class=" bg-blue-700 rounded-md m-6 min-w-[400px] max-w-[460px] flex items-center justify-between overflow-hidden max-lg:max-w-[400px]">
+                <div class="p-5 text-lg">Memo</div>
+                <div class="py-5 px-7 text-lg  bg-[#e62f5f] cursor-pointer select-none " data-open="modal1" >
+                  <span class="material-icons translate-y-1">visibility</span>
+                </div>
+              </div>
+              <div class=" bg-blue-700 rounded-md m-6 min-w-[400px] max-w-[460px] flex items-center justify-between overflow-hidden max-lg:max-w-[400px] ">
+                <div class="p-5 text-lg">Sanity Page Builder</div>
+                <div class="py-5 px-7 text-lg  bg-[#e62f5f] cursor-pointer select-none" data-open="modal2">
+                  <span class="material-icons translate-y-1">visibility</span>
+                </div>
+              </div>
+              <div class=" bg-blue-700 rounded-md m-6 min-w-[400px] max-w-[460px] flex items-center justify-between overflow-hidden max-lg:max-w-[400px] ">
+                <div class="p-5 text-lg">Trella Replica app</div>
+                <div class="py-5 px-7 text-lg  bg-[#e62f5f] cursor-pointer select-none" data-open="modal3">
+                  <span class="material-icons translate-y-1">visibility</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal" id="modal1">
+          <div class="bg-blue-300 max-w-md max-lg:w-10/12 m-auto rounded-md py-4">
+            <h2 class="text-left text-lg px-4 font-medium">Memo Project</h2>
+            <div class="indent-2 text-lg px-4">
+              A web application to share our moments
+            </div>
+            <div class="bg-white mt-1 flex items-stretch justify-start p-4 overflow-x-auto scroll-able">
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                It was built with nodejs and reactjs
+              </div>
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                I also used Mongo Database and Cloudinary for storing image.
+              </div>
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                This application allows people to post and share images to everyone. People can also like and leave comments on the posts.
+              </div>
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                We can search other people and posts base on tags, name
+              </div>
+            </div>
+            <div class="flex justify-end items-center px-4 mt-4">
+              <div class="bg-gray-700 px-4 py-2 rounded-md font-semibold cursor-pointer text-white" data-close>Close it !</div>
+            </div>
+          </div>
+          <br/>
+        </div>
+        <div class="modal" id="modal2">
+          <div class="bg-blue-300 max-w-md max-lg:w-10/12 m-auto rounded-md py-4">
+            <h2 class="text-left text-lg px-4 font-medium">Sanity Page Builder Project</h2>
+            <div class="indent-2 text-lg px-4">
+              A web application controlled by a Sanity studio to show products 
+            </div>
+            <div class="py-12 px-4 my-4 bg-[url('/code-bg.jpg')]  bg-cover bg-center">
+              <div class="text-white p-4 bg-blue-500 rounded-md">
+                Github Frontend: <a href="https://github.com/NhanNguyen201/hasasa" target="_blank" rel="noopener noreferrer" class="underline">Hasasa github</a>
+                <br/>
+                Github studio: <a href="https://github.com/NhanNguyen201/hasasa_sanity" target="_blank" rel="noopener noreferrer" class="underline">Sanity studio github</a>
+                <br/>
+                Site:  <a href="http://hasasa.vercel.app/" target="_blank" rel="noopener noreferrer" class="underline">Hasasa</a>
+              </div>
+            </div>
+            <div class="bg-white mt-1 flex items-stretch justify-start p-4 overflow-x-auto scroll-able">
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                It was built with Nextjs and Sanity CMS
+              </div>
+              
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                This application allows admin users to manipulate the store products and pages, write blogs, process the order 
+              </div>
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                Customer users can read blog of products, purchase products as well
+              </div>
+            </div>
+            <div class="flex justify-end items-center px-4 mt-4">
+              <div class="bg-gray-700 px-4 py-2 rounded-md font-semibold cursor-pointer text-white" data-close>Close it !</div>
+            </div>
+          </div>
+          <br/>
+        </div>
+        <div class="modal" id="modal3">
+          <div class="bg-blue-300 max-w-md max-lg:w-10/12 m-auto rounded-md py-4">
+            <h2 class="text-left text-lg px-4 font-medium">Trella Todo Project</h2>
+            <div class="indent-2 text-lg px-4">
+              A todo application but more like Trello
+            </div>
+            <div class="py-12 px-4 my-4 bg-[url('/code-bg.jpg')]  bg-cover bg-center">
+                <div class="text-white p-4 bg-blue-500 rounded-md">
+                  Github: <a href="https://github.com/NhanNguyen201/trella" target="_blank" rel="noopener noreferrer" class="underline">Trella github</a>
+                  <br/>
+                  Site:  <a href="https://trella-ruby.vercel.app/" target="_blank" rel="noopener noreferrer" class="underline">Trella Website</a>
+                </div>
+            </div>
+            <div class="bg-white mt-1 flex items-stretch justify-start p-4 overflow-x-auto scroll-able">
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                It was built with Nextjs and Appwrite
+              </div>   
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                This application allows admin users to manipulate the tasks
+              </div>
+              <div class="p-4 min-w-[200px] max-w-[500px] bg-gray-200 rounded-md m-4 indent-2"> 
+                I built it in order to learn about Appwrite
+              </div>
+            </div>
+            <div class="flex justify-end items-center px-4 mt-4">
+              <div class="bg-gray-700 px-4 py-2 rounded-md font-semibold cursor-pointer text-white" data-close>Close it !</div>
+            </div>
+          </div>
+          <br/>
+        </div>
+      </section>
+      <section class="min-h-screen pt-14 overflow-hidden" id="contact">
+        <div class="m-auto max-w-5xl pt-12 ">
+          <div class=" flex-grow bg-black p-5 text-white max-lg:w-full max-lg:px-12">
+            <h1 class="text-2xl">#Contact</h1>
+            <h2 class="text-xl">I look forward to hearing from you</h2>
+          </div>
+          <div class="relative">
+            <div class="h-full min-h-[600px] w-full max-lg:w-full absolute top-0 left-0 z-0" id="bloom-container">
+              <!-- <canvas id="bloom-app" ></canvas> -->
+              <div class="h-full w-full bg-black text-center box-border pt-20 text-4xl text-white">Loading...</div>
+
+
+
+            </div>
+            
+            <div class="relative flex flex-wrap justify-center items-center  px-14 pt-5 ">
+              <div class="py-2 bg-blue-500 rounded-md m-3 min-w-[400px] max-w-[460px]  ">
+                <div class="bg-cyan-200 py-4 px-9 text-lg ">
+                  <span class="material-icons translate-y-1">mail</span> Gmail: nhangc2000@gmail.com
+                </div>
+              </div>
+              <div class="py-2 bg-blue-500 rounded-md m-3 min-w-[400px] max-w-[460px]  max-lg:max-w-[400px]">
+                <div class="bg-cyan-200 py-4 px-9 text-lg">
+                  <span class="material-icons translate-y-1">phone</span> Phone: +84394371404
+                </div>
+              </div>
+              <div class="py-2 bg-blue-500 rounded-md m-3  min-w-[400px] max-w-[460px] max-lg:max-w-[400px]">
+                <div class="bg-cyan-200 py-4 px-9 text-lg">
+                  <span class="material-icons translate-y-1">facebook</span> Facebook: <a href="https://www.facebook.com/profile.php?id=100039917464319" target="_blank" rel="noopener noreferrer" class="underline">Nguyễn Trọng Nhân</a>
+                </div>
+              </div>
+              <div class="py-2 bg-blue-500 rounded-md m-3  min-w-[400px] max-w-[460px] max-lg:max-w-[400px]">
+                <div class="bg-cyan-200 py-4 px-9 text-lg">
+                  <span class="material-icons translate-y-1">code</span> Github: <a href="https://github.com/NhanNguyen201" target="_blank" rel="noopener noreferrer" class="underline">Nguyễn Trọng Nhân</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%- include('footer'); -%>
+      
+    </body>
+  </html>
