@@ -1,10 +1,9 @@
 const { slugParamToPath, getSlugVariations } = require("./slugs");
 const { client} = require('./saniyClient')
 const groq = require('groq')
-const {componentHandler} = require('./components')
+const {componentHandler, handlePosts} = require('./components')
 exports.indexRoute = async(_, res) => {
     let data;
-    // order(publishAt desc)
     const gr = groq`*[_type == "indexPage"] | order(createdAt desc)[0]{
         title,
         introduce,
@@ -26,6 +25,7 @@ exports.indexRoute = async(_, res) => {
         data = await client.fetch(gr)
         if(data) {
             page.introduce = data.introduce ? componentHandler(data.introduce) : null
+            page.posts = data.posts ? handlePosts(data.posts) : null
         } 
         return res.render('index', {page})
     } catch (error) {
