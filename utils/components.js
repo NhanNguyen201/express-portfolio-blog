@@ -8,7 +8,8 @@ const handlePortable = comp => {
         types: {
             image: ({value}) => {
                 const source = urlFor(value.asset).url()
-                return html`<img class="object-center object-cover max-h-[600px] w-full my-4" src="${source}" />`
+                const includeChildren = `<img class="object-center object-cover max-h-[600px] w-full my-4" src="${source}" />`
+                return html`${includeChildren}`
             },
             callToAction: ({value, isInline}) =>
                 isInline
@@ -17,10 +18,12 @@ const handlePortable = comp => {
         },
         listItem: {
             bullet: ({children}) => {
-                return html`<li class="list-disc list-inside">${children}</li>`
+                const includeChildren = `<li class="list-disc list-inside">${children}</li>`
+                return html`${includeChildren}`
             },
             number: ({children}) => {
-                return html`<li class="list-decimal  list-inside">${children}</li>`
+                const includeChildren = `<li class="list-decimal  list-inside">${children}</li>`
+                return html`${includeChildren}`
             }
         },
         block: {
@@ -61,11 +64,12 @@ const handlePortable = comp => {
         
                 if (uriLooksSafe(href)) {
                     const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
-                    return html`<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    const includeChildren = `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    return html`${includeChildren}`
                 }
         
                 // If the URI appears unsafe, render the children (eg, text) without the link
-                return children
+                return html`${children}`
             }, 
             internalLink: ({children, value}) => {
                 
@@ -73,11 +77,12 @@ const handlePortable = comp => {
         
                 if (uriLooksSafe(href)) {
                     const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
-                    return html`<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    const includeChildren = `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    return html`${includeChildren}`
                 }
         
                 // If the URI appears unsafe, render the children (eg, text) without the link
-                return children
+                return html`${children}`
             },    
             color: (self) => { 
                 let includeChildren = `<p class="text-[${self.value.hex}]">${self.children}</p>`
@@ -90,7 +95,15 @@ const handlePortable = comp => {
             del: ({children}) => {
                 return html`<del>${children}</del>`
             },
-           
+            strong: ({children}) => {
+                return html`<strong>${children}</strong>`
+            },
+            em: ({children}) => {
+                return html`<em>${children}</em>`
+            },
+            underline: ({children}) => {
+                return html`<u>${children}</u>`
+            }
         },
     }
     let toHtml = toHTML(comp.contentText, {components: myPortableTextComponents})
