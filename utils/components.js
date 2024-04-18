@@ -84,8 +84,8 @@ const handlePortable = comp => {
                 // If the URI appears unsafe, render the children (eg, text) without the link
                 return html`${children}`
             },    
-            color: (self) => { 
-                let includeChildren = `<p class="text-[${self.value.hex}]">${self.children}</p>`
+            color: ({children, value}) => { 
+                let includeChildren = `<span class="text-[${value.hex}]">${children}</span>`
                 return html`${includeChildren}`
             },
             code: ({children}) => { 
