@@ -168,10 +168,16 @@ exports.handlePosts = (posts) => {
         
         const link = `/${p.link.slug.current}`
         const includeChildren = `
-            <div class="px-4 py-2 bg-blue-500 rounded-md m-3 min-w-[400px] max-w-[460px] max-lg:max-w-[400px]">
-                <h4 class="text-2xl font-bold">${p.title}</h4>
-                <p>${p.content}</p>
-                <a href="${link}" target="_blank" rel="noopener noreferrer" class="underline">Go to the blog post</a>
+            <div class="text-black bg-white rounded-md m-3 min-w-[400px] max-w-[460px] max-lg:max-w-[400px]">
+                <h4 class="px-4 py-2 text-2xl font-bold">${p.title}</h4>
+                <div class="border-t-2 border-gray-300"></div>
+                <div class="px-2 py-3">
+                    <p>${p.content}</p>
+                </div>
+                <div class="border-t-2 border-gray-300"></div>
+                <div class="px-2 py-1 text-right">
+                    <a href="${link}" target="_blank" rel="noopener noreferrer" class=" underline">To the blog page</a>
+                </div>
             </div>
         `
         return html`${includeChildren}`
