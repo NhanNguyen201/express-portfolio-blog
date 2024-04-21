@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="./assets/index-b3e3719b.css">
+    <%- seo %>
     <title><%- title %></title>
 </head>
 <body class="bg-gradient-to-l from-cyan-500 to-blue-500">
-    <%- include('nav'); -%>
+    <%- include('partial/nav'); -%>
     <div class="min-h-screen bg-white m-auto max-w-5xl p-5">
         <% contents.forEach(function(content){ %>
             <%- content %>
         <% }); %>
     </div>
-    <%- include('footer'); -%>
+    <%- include('partial/footer'); -%>
 </body>
 </html>

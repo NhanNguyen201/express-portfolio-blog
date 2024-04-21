@@ -2,6 +2,7 @@ const { slugParamToPath, getSlugVariations } = require("./slugs");
 const { client} = require('./saniyClient')
 const groq = require('groq')
 const {componentHandler, handlePosts} = require('./components')
+const {seoHandler} = require('./seoHandler')
 exports.indexRoute = async(_, res) => {
     let data;
     const gr = groq`*[_type == "indexPage"] | order(createdAt desc)[0]{
@@ -42,8 +43,11 @@ exports.slugRoute = async(req, res) => {
             slug,
             page-> {
                 title,
-                content[]
+                content[],
+                description,
+                openGraphImage
             },
+
         }`
         try {
             data = await client.fetch(
@@ -55,7 +59,14 @@ exports.slugRoute = async(req, res) => {
             } else {
                 if(data.page.content.length > 0) {
                     let contents = data.page.content.map(c => componentHandler(c))
-                    return res.render("slug", {title: data.page.title, contents})
+                    const seoParams = {
+                        title:  data.page.title,
+                        openGraphImage: data.page.openGraphImage,
+                        description: data.page.description,
+                        canonical: `/${data.slug.current}`
+                    }
+                    const seo = seoHandler(seoParams)
+                    return res.render("slug", {title: data.page.title, contents, seo})
                 } else {
                     return res.render("slug", {contents: ["<p>Sorry, this page is empty</p>"]})
                 }
