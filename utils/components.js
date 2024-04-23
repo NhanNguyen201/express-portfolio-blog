@@ -8,7 +8,11 @@ const handlePortable = comp => {
         types: {
             image: ({value}) => {
                 const source = urlFor(value.asset).url()
-                const includeChildren = `<img class="object-center object-cover max-h-[600px] w-full my-4" src="${source}" />`
+                const includeChildren = `
+                <div class="bg-black my-4">
+                    <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
+                </div>
+                `
                 return html`${includeChildren}`
             },
             callToAction: ({value, isInline}) =>
@@ -27,10 +31,10 @@ const handlePortable = comp => {
             }
         },
         block: {
-            // normal: ({children}) => {
-            //     let includeChildren = `<p>${children}</p>`
-            //     return html`${includeChildren}`
-            // },
+            normal: ({children}) => {
+                let includeChildren = `<p class="indent-3">${children}</p>`
+                return html`${includeChildren}`
+            },
             h1: ({children}) => {
                 return html`<h1 class="text-5xl font-extrabold">${children}</h1>`
             },
