@@ -58,6 +58,9 @@ exports.slugRoute = async(req, res) => {
                 return res.render('404')
             } else {
                 if(data.page.content.length > 0) {
+                    if(req.params[0] !== data.slug.current) {
+                        return res.redirect(`/${data.slug.current}`)
+                    }
                     let contents = data.page.content.map(c => componentHandler(c))
                     const seoParams = {
                         title:  data.page.title,
