@@ -63,7 +63,7 @@ exports.slugRoute = async(req, res) => {
                         title:  data.page.title,
                         openGraphImage: data.page.openGraphImage,
                         description: data.page.description,
-                        canonical: `/${data.slug.current}`
+                        canonical: `https://${req.headers.host}/${data.slug.current}`
                     }
                     const seo = seoHandler(seoParams)
                     return res.render("slug", {title: data.page.title, contents, seo})
