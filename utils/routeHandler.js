@@ -59,7 +59,7 @@ exports.slugRoute = async(req, res) => {
             } else {
                 if(data.page.content.length > 0) {
                     if(req.params[0] !== data.slug.current) {
-                        return res.redirect(`/${data.slug.current}`)
+                        return res.redirect(200, `/${data.slug.current}`)
                     }
                     let contents = data.page.content.map(c => componentHandler(c))
                     const seoParams = {
