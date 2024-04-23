@@ -9,9 +9,9 @@ const handlePortable = comp => {
             image: ({value}) => {
                 const source = urlFor(value.asset).url()
                 const includeChildren = `
-                <div class="bg-black my-4">
-                    <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
-                </div>
+                    <div class="bg-black my-4">
+                        <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
+                    </div>
                 `
                 return html`${includeChildren}`
             },
@@ -118,8 +118,8 @@ const handleFigure = comp => {
     const source = urlFor(comp.asset).url()
     const captiondiv = comp.caption ? html`<div class="p-2 text-center bg-gray-300">${comp.caption}</div>` : null
     return html`
-        <div class="my-4">
-            <img class="object-center object-cover max-h-[600px] w-full" src="${source}" />
+        <div class="bg-black my-4">
+            <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
             ${captiondiv}
         </div>
     `
@@ -127,7 +127,6 @@ const handleFigure = comp => {
 const handleTextSection = comp => {
     const portableHandle = handlePortable(comp)
     const heading = comp.heading ? `<h2 class="text-4xl my-4 font-bold">${comp.heading}</h2>` : null
-    // return  html`${heading}` + html`${portableHandle}`
     const mix = `
         <div class="my-4">
             <div class="bg-gray-300 py-1 px-2 mb-4">
