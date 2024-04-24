@@ -3,6 +3,8 @@ const { client} = require('./saniyClient')
 const groq = require('groq')
 const {componentHandler, handlePosts} = require('./components')
 const {seoHandler} = require('./seoHandler')
+const mcache = require('memory-cache');
+
 exports.indexRoute = async(_, res) => {
     let data;
     const gr = groq`*[_type == "indexPage"] | order(createdAt desc)[0]{
@@ -69,13 +71,18 @@ exports.slugRoute = async(req, res) => {
                         canonical: `https://${req.headers.host}/${data.slug.current}`
                     }
                     const seo = seoHandler(seoParams)
-                    return res.render("slug", {title: data.page.title, contents, seo})
+                    const pageData = {title: data.page.title, contents, seo}
+                    let key = '__express__' + req.originalUrl || req.url
+                    mcache.put(key, pageData, 15 * 60 * 1000 )
+
+                    return res.render("slug", {...pageData})
                 } else {
                     return res.render("slug", {contents: ["<p>Sorry, this page is empty</p>"]})
                 }
             }
             
         } catch (error) {
+            console.log("Error: ", error)
             return res.render('404')
         }
     } else{
