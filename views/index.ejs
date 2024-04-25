@@ -25,8 +25,8 @@
           <div class="flex-grow w-1/2 p-5 pr-2 max-lg:w-full max-lg:px-12 bg-white">
             <h1 class="text-2xl ">#About</h1>
             <h2 class="text-xl mb-2 ">Tên: Nguyễn Trọng Nhân</h2>
-            <% if (page && page.introduce) { %>
-              <%- page.introduce %>
+            <% if (introduce) { %>
+              <%- introduce %>
             <% } %>
           </div>
           <div class="flex-grow w-1/2 max-lg:w-full relative">
@@ -164,7 +164,7 @@
             <h1 class="text-2xl">#Blogs</h1>
             <h2 class="text-xl">Some blogs may interest you</h2>
             <div class="flex flex-wrap justify-start items-center pt-5 px-9 max-lg:px-5 max-lg:justify-center">
-              <% page.posts.forEach(function(p){ %>
+              <% posts.forEach(function(p){ %>
                   <%- p %>
               <% }); %>
             </div>

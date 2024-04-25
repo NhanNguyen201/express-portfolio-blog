@@ -11,6 +11,7 @@ app.use(cors({
 }));
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
+app.use(middleware.cache)
 app.get("/", indexRoute);
-app.get("/*", middleware.cache(), slugRoute)
+app.get("/*", slugRoute)
 app.listen( PORT, () => console.log(`App is running at port ${PORT}`));
