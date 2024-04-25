@@ -36,22 +36,22 @@ const handlePortable = comp => {
                 return html`${includeChildren}`
             },
             h1: ({children}) => {
-                return html`<h1 class="text-5xl font-extrabold">${children}</h1>`
+                return html`<h1 class="text-5xl font-bold my-3">${children}</h1>`
             },
             h2: ({children}) => {
-                return html`<h2 class="text-4xl font-bold">${children}</h2>`
+                return html`<h2 class="text-4xl font-semibold my-3">${children}</h2>`
             },
             h3: ({children}) => {
-                return html`<h3 class="text-3xl font-bold">${children}</h3>`
+                return html`<h3 class="text-3xl font-semibold my-3">${children}</h3>`
             },
             h4: ({children}) => {
-                return html`<h4 class="text-2xl font-bold">${children}</h4>`
+                return html`<h4 class="text-2xl font-medium my-2">${children}</h4>`
             },
             h5: ({children}) => {
-                return html`<h5 class="text-xl font-bold">${children}</h5>`
+                return html`<h5 class="text-xl font-medium my-2">${children}</h5>`
             },
             h6: ({children}) => {
-                return html`<h6 class="text-lg font-bold">${children}</h6>`
+                return html`<h6 class="text-lg font-medium my-2">${children}</h6>`
             },
             blockquote: ({children}) => {
                 return html`
@@ -126,7 +126,7 @@ const handleFigure = comp => {
 }
 const handleTextSection = comp => {
     const portableHandle = handlePortable(comp)
-    const heading = comp.heading ? `<h2 class="text-4xl my-4 font-bold">${comp.heading}</h2>` : null
+    const heading = comp.heading ? `<h2 class="text-4xl font-semibold my-3">${comp.heading}</h2>` : null
     const mix = `
         <div class="my-4">
             <div class="bg-gray-300 py-1 px-2 mb-4">
