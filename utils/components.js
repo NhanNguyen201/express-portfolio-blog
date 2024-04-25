@@ -8,53 +8,49 @@ const handlePortable = comp => {
         types: {
             image: ({value}) => {
                 const source = urlFor(value.asset).url()
-                const includeChildren = `
+                return `
                     <div class="bg-black my-4">
                         <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
                     </div>
                 `
-                return html`${includeChildren}`
             },
             callToAction: ({value, isInline}) =>
                 isInline
-                    ? html`<a href="${value.url}">${value.text}</a>`
-                    : html`<div class="callToAction">${value.text}</div>`,
+                    ? `<a href="${value.url}">${value.text}</a>`
+                    : `<div class="callToAction">${value.text}</div>`,
         },
         listItem: {
             bullet: ({children}) => {
-                const includeChildren = `<li class="list-disc list-inside">${children}</li>`
-                return html`${includeChildren}`
+                return `<li class="list-disc list-inside">${children}</li>`
             },
             number: ({children}) => {
-                const includeChildren = `<li class="list-decimal  list-inside">${children}</li>`
-                return html`${includeChildren}`
+                return `<li class="list-decimal list-inside">${children}</li>`
             }
         },
         block: {
             normal: ({children}) => {
-                let includeChildren = `<p class="indent-3">${children}</p>`
-                return html`${includeChildren}`
+                return `<p class="indent-3">${children}</p>`
             },
             h1: ({children}) => {
-                return html`<h1 class="text-5xl font-bold my-3">${children}</h1>`
+                return `<h1 class="text-5xl font-bold my-3">${children}</h1>`
             },
             h2: ({children}) => {
-                return html`<h2 class="text-4xl font-semibold my-3">${children}</h2>`
+                return `<h2 class="text-4xl font-semibold my-3">${children}</h2>`
             },
             h3: ({children}) => {
-                return html`<h3 class="text-3xl font-semibold my-3">${children}</h3>`
+                return `<h3 class="text-3xl font-semibold my-3">${children}</h3>`
             },
             h4: ({children}) => {
-                return html`<h4 class="text-2xl font-medium my-2">${children}</h4>`
+                return `<h4 class="text-2xl font-medium my-2">${children}</h4>`
             },
             h5: ({children}) => {
-                return html`<h5 class="text-xl font-medium my-2">${children}</h5>`
+                return `<h5 class="text-xl font-medium my-2">${children}</h5>`
             },
             h6: ({children}) => {
-                return html`<h6 class="text-lg font-medium my-2">${children}</h6>`
+                return `<h6 class="text-lg font-medium my-2">${children}</h6>`
             },
             blockquote: ({children}) => {
-                return html`
+                return `
                 <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-white">
                     <p>"${children}"</p>
                 </blockquote>`
@@ -69,11 +65,11 @@ const handlePortable = comp => {
                 if (uriLooksSafe(href)) {
                     const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
                     const includeChildren = `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
-                    return html`${includeChildren}`
+                    return includeChildren
                 }
         
                 // If the URI appears unsafe, render the children (eg, text) without the link
-                return html`${children}`
+                return children
             }, 
             internalLink: ({children, value}) => {
                 
@@ -81,32 +77,29 @@ const handlePortable = comp => {
         
                 if (uriLooksSafe(href)) {
                     const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
-                    const includeChildren = `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
-                    return html`${includeChildren}`
+                    return `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
                 }
         
                 // If the URI appears unsafe, render the children (eg, text) without the link
-                return html`${children}`
+                return children
             },    
             color: ({children, value}) => { 
-                let includeChildren = `<span class="text-[${value.hex}]">${children}</span>`
-                return html`${includeChildren}`
+                return `<span class="text-[${value.hex}]">${children}</span>`
             },
             code: ({children}) => { 
-                let includeChildren = `<code class="bg-gray-200 rounded-md">${children}</code>`
-                return html`${includeChildren}`
+                return `<code class="bg-gray-200 rounded-md">${children}</code>`
             },
             del: ({children}) => {
-                return html`<del>${children}</del>`
+                return `<del>${children}</del>`
             },
             strong: ({children}) => {
-                return html`<strong>${children}</strong>`
+                return `<strong>${children}</strong>`
             },
             em: ({children}) => {
-                return html`<em>${children}</em>`
+                return `<em>${children}</em>`
             },
             underline: ({children}) => {
-                return html`<u>${children}</u>`
+                return `<u>${children}</u>`
             }
         },
     }
