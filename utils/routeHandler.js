@@ -7,7 +7,6 @@ const mcache = require('memory-cache');
 
 exports.indexRoute = async(req, res) => {
     if(req.pageData && Object.keys(req.pageData).length > 0) return res.render("index", {...req.pageData})
-
     let data;
     const gr = groq`*[_type == "indexPage"] | order(createdAt desc)[0]{
         title,
@@ -25,18 +24,21 @@ exports.indexRoute = async(req, res) => {
     try {
         let page = {
             introduce: null,
-            posts: null 
+            posts: [] 
         }
         data = await client.fetch(gr)
         if(data) {
             let key = '__express__' + req.originalUrl || req.url
             page.introduce = data.introduce ? componentHandler(data.introduce) : null
-            page.posts = data.posts ? handlePosts(data.posts) : null
+            page.posts = data.posts ? handlePosts(data.posts) : []
             mcache.put(key, page, 15 * 60 * 1000 )
         } 
         return res.render('index', {...page})
     } catch (error) {
-        return res.render('index', {page: {}})
+        return res.render('index', {
+            introduce: null,
+            posts: [] 
+        })
     }
 }
 exports.slugRoute = async(req, res) => {
