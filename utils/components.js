@@ -9,7 +9,7 @@ const handlePortable = comp => {
             image: ({value}) => {
                 const source = urlFor(value.asset).url()
                 return `
-                    <div class="bg-black my-4">
+                    <div class="bg-gray-200 my-4">
                         <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
                     </div>
                 `
@@ -63,8 +63,7 @@ const handlePortable = comp => {
                 const href = value.href || ''
         
                 if (uriLooksSafe(href)) {
-                    const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
-                    const includeChildren = `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    const includeChildren = `<a href="${href}" rel="noreferrer noopener" class="underline">${children}</a>`
                     return includeChildren
                 }
         
@@ -76,8 +75,7 @@ const handlePortable = comp => {
                 const href = value.href || ''
         
                 if (uriLooksSafe(href)) {
-                    const rel = href.startsWith('/') ? undefined : 'noreferrer noopener'
-                    return `<a href="${href}" rel="${rel}" class="underline">${children}</a>`
+                    return `<a href="${href}" rel="noreferrer noopener" class="underline">${children}</a>`
                 }
         
                 // If the URI appears unsafe, render the children (eg, text) without the link
@@ -109,20 +107,21 @@ const handlePortable = comp => {
 }
 const handleFigure = comp => {
     const source = urlFor(comp.asset).url()
-    const captiondiv = comp.caption ? html`<div class="p-2 text-center bg-gray-300">${comp.caption}</div>` : null
-    return html`
-        <div class="bg-black my-4">
+    const captiondiv = comp.caption ? `<div class="p-2 text-center bg-gray-300">${comp.caption}</div>` : null
+    const mix =`
+        <div class="bg-gray-200 my-4">
             <img class="object-contain max-h-[400px] max-md:max-h-[300px] max-sm:max-h-[200px]  max-w-full m-auto" src="${source}" />
             ${captiondiv}
         </div>
     `
+    return html`${mix}`
 }
 const handleTextSection = comp => {
     const portableHandle = handlePortable(comp)
     const heading = comp.heading ? `<h2 class="text-4xl font-semibold my-3">${comp.heading}</h2>` : null
     const mix = `
         <div class="my-4">
-            <div class="bg-gray-300 py-1 px-2 mb-4">
+            <div class="bg-gray-200 py-1 px-2 mb-4">
                 ${heading}
             </div>
             ${portableHandle}
